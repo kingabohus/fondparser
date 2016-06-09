@@ -1,3 +1,4 @@
+import os
 os.system('minisat \'try.cnf\' \'output\'.txt')
 
 output = open('output.txt', 'r')
@@ -8,8 +9,8 @@ for line in data[1:]:
 		if word[0] != '-':
 			number = int(word)
 			fluent = CNF.all_literals[number-1]
- 			print fluent
-        else:
-            number = int(word[1:])
-            fluent = CNF.all_literals[number-1]
-            print 'NOT-{}'.format(fluent)
+			print fluent
+		# else:
+		# 	number = int(word[1:])
+		# 	fluent = CNF.all_literals[number-1]
+		# 	print 'NOT-{}'.format(fluent)
