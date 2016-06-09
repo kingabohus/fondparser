@@ -353,6 +353,9 @@ class T2CNF:
                 goallist = [self.lit_lookup[g.predicate,j,t] for g in self.goal.args ]
                 enda = self.lit_lookup[self.end_atom, j, t]
                 self.printtofile(When(And(goallist), enda))
+                dgjt = self.lit_lookup[self.dg_atom, j,t]
+                alist = [self.lit_lookup[o, j, t] for o in pos]
+                self.printtofile(When(dgjt, Not([Or(alist)])))
 
 
 
