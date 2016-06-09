@@ -347,9 +347,16 @@ class T2CNF:
 
         for j in range(self.j):
             for t in range(self.horizon-1):
-                alist = [self.lit_lookup[o,j,t] for o in pos]
-                dgjt = self.lit_lookup[self.dg_atom, j,t]
-                self.printtofile(Or([dgjt]+alist))
+                # alist = [self.lit_lookup[o,j,t] for o in pos]
+                # dgjt = self.lit_lookup[self.dg_atom, j,t]
+                # self.printtofile(Or([dgjt]+alist))
+                goallist = [self.lit_lookup[g.predicate,j,t] for g in self.goal.args ]
+                enda = self.lit_lookup[self.end_atom, j, t]
+                self.printtofile(When(And(goallist), enda))
+
+
+
+
 
 
     def printtofile(self, formula):
