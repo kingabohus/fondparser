@@ -345,6 +345,12 @@ class T2CNF:
                     self.printtofile(When(And([ajt, Not([djkt])]),akt ))
                     self.printtofile(When(And([akt, Not([djkt])]), ajt))
 
+        for j in range(self.j):
+            for t in range(self.horizon-1):
+                alist = [self.lit_lookup[o,j,t] for o in pos]
+                dgjt = self.lit_lookup[self.dg_atom, j,t]
+                self.printtofile(Or([dgjt]+alist))
+
 
     def printtofile(self, formula):
         dict = self.lit_dict
@@ -412,8 +418,5 @@ CNF.create_literals()
 CNF.adds_dels()
 CNF.translate()
 
+print 'ayyoo'
 execfile('callsat.py')
-
-
-
-# print 'ayyoo'
